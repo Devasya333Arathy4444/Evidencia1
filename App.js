@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import AppNavigator from './src/navigations/Navigator'
+import AppNavigator from './src/navegar/Navegador'
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo'
+
+//Librerias de React.
 import { isRequired } from 'react-native/Libraries/DeprecatedPropTypes/DeprecatedColorPropType';
 
 export default class App extends React.Component {
@@ -11,6 +13,7 @@ export default class App extends React.Component {
     isFontLoaded:false
   }
 
+//Aqui es para el tipo de letra a utilizar (las fuentes)
   async componentDidMount(){
     await Font.loadAsync({
       'SemiBold' : require('./src/fonts/Montserrat-SemiBold.otf'),
@@ -20,6 +23,7 @@ export default class App extends React.Component {
     this.setState({isFontLoaded:true})
   }
 
+// navegación
   render(){
     return (
       (this.state.isFontLoaded === true) ? (<AppNavigator/>):(AppLoading)
@@ -29,6 +33,7 @@ export default class App extends React.Component {
  
 }
 
+//Estilo de la página
 const styles = StyleSheet.create({
   container: {
     flex: 1,
